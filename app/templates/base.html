@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT LAG</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %} ">
+</head>
+<body>
+    
+    <header>
+        <!-- <img src="{%static  'img/header.jpg'%}" alt=""> -->
+        <p  class="header-title">Інформатика </p>
+        <p  class="header-description">
+            {% block title %}
+
+            {% endblock title %}
+        
+        </p>
+    </header>
+    <main>
+        <div class="container ">
+            
+            {% block content %}
+            
+            {% endblock content %}
+
+        </div>
+    </main>
+
+</body>
+</html>
+
+{% comment %} {% for category in categories %}
+{% if not category.parent_category %}
+
+<h2>{{ category.name }}</h2>
+{% endif %}
+
+
+ {% for subcategory in category.get_subcategories %}
+    <p>--->{{ subcategory.name }}</p>
+{% endfor %}  {% endcomment %}

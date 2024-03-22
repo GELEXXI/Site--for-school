@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{category}}
+{% endblock title %}
+
+{% block content %}
+<h1>{{ category.name }}</h1>        
+<div class="wrapper">
+    {% for subcategory in subcategories %}
+    <div class="subcategory">
+        {% if subcategory.img %}
+        <figure><img src="{{ subcategory.img.url }}" alt="{{ subcategory.name }}"></figure>
+        {% endif %}
+        <h2>{{ subcategory.name }}</h2>
+        <p>{{ subcategory.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
