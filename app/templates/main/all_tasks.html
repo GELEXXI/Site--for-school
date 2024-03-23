@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Задачаі
+{% endblock title %}
+
+
+
+{% block content %}
+
+    {% for task in tasks %}
+    <div class="post-subcategory">
+        <!-- вивід полів задачі --> 
+        <h2> {{ task.title }} </h2>
+        <p> {{ task.description }} </p>
+        <p> {{ task.created_at }} </p>
+        
+        {% if task.is_completed %}
+            <p>Answer: {{ task.answer }}</p>
+        {% endif %} 
+    </div>  
+    {% endfor %}
+{% endblock content %}

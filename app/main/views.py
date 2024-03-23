@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from main.models import Categories
+from main.models import Categories,PostTasks
 # Create your views here.
 
 def index(request):
@@ -20,3 +20,11 @@ def subcategories(request, category_slug):
         'subcategories': subcategories,
     }
     return render(request, 'main/subcategories.html', context)
+
+def show_all_tasks(request):
+    tasks = PostTasks.objects.all()
+    context = {
+        'tasks': tasks
+    }
+    return render(request, 'main/all_tasks.html', context)
+    
