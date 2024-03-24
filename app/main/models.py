@@ -26,6 +26,7 @@ class PostTasks(models.Model):
     is_completed = models.BooleanField(default=False)
     answer =models.TextField(blank=True, null=True)
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True, blank=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
     
     def __str__(self):
         return self.title

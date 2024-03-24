@@ -8,15 +8,16 @@
 {% block content %}
 <h1>{{ category.name }}</h1>        
 
-    {% for subcategory in subcategories %}
+    {% for category in categories %}
     <div class="post-subcategory">
         {% if subcategory.img %}
-        <figure><img src="{{ subcategory.img.url }}" alt="{{ subcategory.name }}"></figure>
+        <figure><img src="{{ category.img.url }}" alt="{{ category.name }}"></figure>
         {% endif %}
-        <h2>{{ subcategory.name }}</h2>
-        <p>{{ subcategory.description }}</p>
-    
+        <h2>{{ category.name }}</h2>
+        <p>{{ category.description }}</p>
+        <a href="{% url 'main:subcategories' category.slug %}" class="btn btn-primary">View</a>
+    </div>
     {% endfor %}
-
+</div>
 {% endblock content %}
 
