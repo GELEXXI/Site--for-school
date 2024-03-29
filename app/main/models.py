@@ -18,6 +18,24 @@ class Categories(models.Model):
         verbose_name_plural = 'Категории'
         verbose_name = 'Категория'
         ordering = ['name']
+        
+class Post(models.Model):
+    
+    title = models.CharField(max_length=200)
+    img = models.ImageField(upload_to='post',verbose_name='Фото поста', blank=True,)
+    content = models.TextField()
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name='URL')
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Пости'
+        verbose_name = 'Пост'
+        ordering = ['id']
 
 class PostTasks(models.Model):
     title = models.CharField(max_length=100)
@@ -30,10 +48,12 @@ class PostTasks(models.Model):
     
     def __str__(self):
         return self.title
+    
     class Meta:
         verbose_name_plural = 'Задачі'
         verbose_name = 'Задача'
         ordering = ['title']
+
 # class SubCategory(models.Model):
 #     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
 #     name = models.CharField(max_length=25, unique=True, verbose_name='Название')

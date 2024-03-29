@@ -1,5 +1,5 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from main.models import Categories,PostTasks
+from django.shortcuts import get_object_or_404, render
+from main.models import Categories,PostTasks,Post
 # Create your views here.
 
 def index(request):
@@ -16,12 +16,25 @@ def subcategories(request, category_slug):
     category = get_object_or_404(Categories, slug=category_slug)
     categories = category.get_subcategories()
     tasks = PostTasks.objects.filter(category__slug=category_slug)
+    posts = Post.objects.filter(category__slug=category_slug)
     if tasks:
 
         context = {
             'tasks': tasks,
         }
         return render(request, 'main/all_tasks.html', context)
+    elif posts and category:
+        context = {
+            'posts': posts,
+            'category': category,
+            'categories': categories,
+        }
+        return render(request,'main/subcategories.html', context)
+    elif posts :
+        context = {
+            'posts': posts,
+        }
+        return render(request,'main/subcategories.html', context) 
     else:  
         context = {
             'category': category,
