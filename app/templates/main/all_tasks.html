@@ -11,15 +11,15 @@
     {% for task in tasks %}
     <div class="post-subcategory">
         <!-- вивід полів задачі --> 
-        <h2> {{ task.title }} </h2>
+        <h2> {{ task.name }} </h2>
         <p> {{ task.description }} </p>
-        <p> {{ task.created_at }} </p>
+        {% comment %} <p> {{ task.created_at }} </p> {% endcomment %}
         
         {% if task.is_completed %}
             Answer:
             <div class="answer">
                 
-                <p> {{ task.answer }}</p>
+                 {{ task.answer| safe }}
             </div>
         {% endif %} 
     </div>  

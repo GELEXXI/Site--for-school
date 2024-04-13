@@ -35,38 +35,50 @@
     {% endcomment %}
 
     {% for post in posts %}
-    <div class="post post2">
-      <div class="post-img">
-            {% if not post.img %}
-            <img src="{% static 'img/python.png' %}" alt="">
-            {% else %}
-                <img src="{{ post.img.url }}" alt="{{ post.name }}">
-            {% endif %}
-            
-        </div> 
-        <div class="post-content">
-            <h2>{{ post.title }}</h2>
-            <p>{{ post.content }}
-                
-            </p>
-            <a href="">Continue Reading
-            </a>
-        </div>
-    </div>
-    {% endfor %}
 
-    <div class="post2">
+    {% if not post.img %}
+    <div class="post2 post-base">
           <div class="post2-content">
             <a href="">
-                <h2>Design is as much an act of spacing as an act of marking.</h2>
+                <h2>{{ post.name }}</h2>
             </a>
-              
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut est minus iste in accusantium repellat repudiandae nulla blanditiis iusto dolores!</p>
+               {{ post.content| safe }}
                   
           </div>
       </div>
 
+      {% else %}
+      <div class="post ">
+        <div class="post-img ">  
+           <img src="{{ post.img.url }}" alt="{{ post.name }}">
+        </div> 
+
+        <div class="post-content">
+            <h2>{{ post.name }}</h2>
+            {{ post.content| safe }}
+             <a href="">Continue Reading</a>
+        </div>
+        </div>
+{% endif %}
+{% endfor %}
+
 
 </div>
 {% endblock content %}
+
+{% block nav %}
+<nav>
+    <ul> Закріплені публікації
+
+        {% comment %} {% tag_navs as  navs %}
+        {% for nav in navs  %}
+        <li>{{nav.name}}</li>
+        {% endfor %} {% endcomment %}
+        {% for pinned_post in pinned_posts %}
+        <li>{{ pinned_post.post }}</li>
+        {% endfor %}
+
+    </ul>
+</nav>
+{% endblock nav %}
 

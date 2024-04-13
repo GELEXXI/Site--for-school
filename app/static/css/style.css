@@ -22,6 +22,7 @@ header {
     align-items: flex-start;
     /* position: relative; */
     padding-left: 50px;
+    margin-bottom: 10px;
 }
 
 header img {
@@ -65,7 +66,7 @@ h1 {
 
 .container {
     width: 1200px;
-    margin: auto;
+    margin-left: 15%;
     min-height: 1000px;
 }
 .wrapper {
@@ -101,20 +102,24 @@ figure {
     border-radius: 5px;
     padding: 15px 30px;
     margin-bottom: 45px;
+    background-color: rgba(33, 124, 243, 0.747);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 .answer  {
     background-color: #222;
-    color: #aaa
+    color: #f0f0f0;
+    margin-top: 5px;
+    padding: 9px;
+    border-radius: 3px;
 }
-.answer p {
+/* .answer p {
     box-sizing: border-box;
-    padding: 20px;
-    background-color: #222;
-    color: #E6E7E7;
-}
+    padding: 5px;
+    /* background-color: #222;
+    color: #E6E7E7; 
+} */
 
 .post {
     display: flex;
@@ -126,10 +131,16 @@ figure {
     border-bottom: 1px solid #E6E7E7;
     
 }
+.post-base:hover {
+    border-bottom: 2px  solid #333; 
+    background-color: #33333317;
+    transition:ease-in;
+}
 .post2 {
 
-    padding:30px 0;
+    padding:30px 20px;
     border-bottom: 1px solid #E6E7E7;
+    
 }
 .post-img  {
     width: 60%;
@@ -154,4 +165,21 @@ img {
     align-self: flex-end;
     margin-top: auto;
     font-weight: 600;
+}
+
+main{
+    display: flex;
+}
+
+nav {
+    width: 300px;
+    height: 400px;
+    box-sizing: border-box;
+    top: 20px;
+  
+    margin-left: 20px;
+    
+    background-color: bisque;
+    position: sticky;
+    margin-top: 20px;
 }
